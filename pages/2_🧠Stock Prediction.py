@@ -12,7 +12,7 @@ from keras.layers import Dense, Dropout, LSTM
 from keras. models import Sequential
 
 
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
+# os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 
 ########################################################################
@@ -25,7 +25,7 @@ def convert_to_float(list):
 	return [float(x) for x in list]
 
 def get_Stocks(SYMBOL):
-	df = pd.read_csv('../Data/'+SYMBOL+'.csv')
+	df = pd.read_csv('./Data/'+SYMBOL+'.csv')
 	return df
 
 ########################################################################
@@ -79,7 +79,7 @@ x_train, y_train = np.array(x_train), np.array(y_train)
 model = None
 
 with st.spinner('Wait The model is on his way ...'):
-	if model is None and not check_file_exists("../keras_model.h5"):
+	if model is None and not check_file_exists("./keras_model.h5"):
 		with st.echo(code_location="below"):
 			model = Sequential()
 			model.add(LSTM(units = 50, activation='relu', return_sequences = True, input_shape=(x_train.shape[1], 1)))
@@ -101,7 +101,7 @@ with st.spinner('Wait The model is on his way ...'):
 
 
 # load the model
-model = load_model('../keras_model.h5')
+model = load_model('./keras_model.h5')
 st.success("Model Generated and Loaded Successfully !", icon="✅")
 
 past_100_days = data_training.tail(100)
