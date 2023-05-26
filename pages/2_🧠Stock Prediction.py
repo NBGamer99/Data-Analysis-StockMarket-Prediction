@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
-import os
 import plotly.express as px
 import plotly.graph_objects as go
 from VAR import *
